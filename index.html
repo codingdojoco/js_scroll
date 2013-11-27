@@ -1,5 +1,6 @@
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Javascript Demo</title>
 	<style>
 		body {
@@ -24,17 +25,22 @@
 	Coding is <div id="magic"></div>
 
 	<script>
-
-		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
+		(function() {
+			var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
 			character_counter = 0;
 
 		function updateText()
 		{
+			if (words[word_counter][character_counter] == ' ') {
+				el.innerHTML=el.innerHTML + '&nbsp;';
+				character_counter++;
+				return;
+			}
 			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
 
-			if(character_counter == words[word_counter].length)
+			if(character_counter > words[word_counter].length)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
@@ -47,6 +53,9 @@
 		}
 
 		setInterval(updateText,300);
+
+	})();
+	console.log(word_counter);
 
 	</script>
 
