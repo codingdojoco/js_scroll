@@ -25,28 +25,40 @@
 
 	<script>
 
-		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
-			el = document.getElementById('magic'),
-			word_counter = 0,
-			character_counter = 0;
+		(function() {
 
-		function updateText()
-		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"];
+			var el = document.getElementById('magic');
+			var word_counter = 0;
+			var character_counter = 0;
 
-			if(character_counter == words[word_counter].length)
+			function updateText()
 			{
-				word_counter++; 	//choose a different word
-				character_counter = 0;	//start over with the first character of the word
-				el.innerHTML = '';  //set the html to be blank
 
-				//if we're displaying the last word, go back to the first word
-				if(word_counter == words.length)
-					word_counter = 0;
+				if(character_counter == words[word_counter].length)
+				{
+					word_counter++; 	//choose a different word
+					character_counter = 0;	//start over with the first character of the word
+					el.innerHTML = '';  //set the html to be blank
+
+					//if we're displaying the last word, go back to the first word
+					if(word_counter == words.length)
+						word_counter = 0;
+				}
+
+				if(words[word_counter][character_counter]==' '){
+					el.innerHTML = el.innerHTML+'&nbsp';
+					character_counter++;
+					//2. There is a bug where the space in the words do not appear correctly. For example for the word "being helpful" when it shows "being " after showing "being" the space should make the right border/cursor move a little bit to the right (to account for the space being entered by the user) yet it doesn't work correctly. Please fix this error.----------Fixed---------
+				}
+				else {
+					el.innerHTML = el.innerHTML+words[word_counter][character_counter++]; 
+					//1. There is a bug where the last character in the word doesn't show up! Please fix this error. ----------Fixed---------
+				}
+
 			}
-		}
 
-		setInterval(updateText,300);
+		setInterval(updateText,300) })();
 
 	</script>
 
