@@ -1,9 +1,10 @@
+//github: https://github.com/schleimer/js_scroll
 <html>
 <head>
 	<title>Javascript Demo</title>
 	<style>
 		body {
-			background-color:black;
+			background-color: #270a22;
 			font-family: monospace;
 			color:white;
 			font-size:50px;
@@ -25,28 +26,32 @@
 
 	<script>
 
-		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
-			el = document.getElementById('magic'),
-			word_counter = 0,
-			character_counter = 0;
+	( function ( ) {	
 
-		function updateText()
-		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			var words = ["fun", "exciting", "about\xA0not\xA0giving\xA0up", "being\xA0helpful", "being\xA0open", "what\xA0I\xA0learned\xA0at\xA0CodingDojo!"],
+				el = document.getElementById('magic'),
+				word_counter = 0,
+				character_counter = 0;
 
-			if(character_counter == words[word_counter].length)
+			function updateText()
 			{
-				word_counter++; 	//choose a different word
-				character_counter = 0;	//start over with the first character of the word
-				el.innerHTML = '';  //set the html to be blank
+				el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
 
-				//if we're displaying the last word, go back to the first word
-				if(word_counter == words.length)
-					word_counter = 0;
+				if(character_counter == words[word_counter].length + 1)
+				{
+					word_counter++; 	//choose a different word
+					character_counter = 0;	//start over with the first character of the word
+					el.innerHTML = '';  //set the html to be blank
+
+					//if we're displaying the last word, go back to the first word
+					if(word_counter == words.length)
+						word_counter = 0;
+				}
 			}
-		}
 
-		setInterval(updateText,300);
+			setInterval(updateText,300);
+		
+		} ( ) );
 
 	</script>
 
