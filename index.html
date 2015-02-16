@@ -25,6 +25,7 @@
 
 	<script>
 
+	(function(){
 		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
@@ -32,8 +33,6 @@
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
-
 			if(character_counter == words[word_counter].length)
 			{
 				word_counter++; 	//choose a different word
@@ -44,9 +43,21 @@
 				if(word_counter == words.length)
 					word_counter = 0;
 			}
+			var char = words[word_counter][character_counter++];
+			if (char == ' ')
+				char = '&nbsp;';
+			el.innerHTML = el.innerHTML+char;
 		}
 
 		setInterval(updateText,300);
+
+		console.log("logging word_counter INSIDE the immediate function");
+		console.log(word_counter);
+
+	}());
+	console.log("logging word_counter OUTSIDE the immediate function");
+	console.log(word_counter);
+
 
 	</script>
 
