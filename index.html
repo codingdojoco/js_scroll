@@ -1,11 +1,11 @@
 <html>
 <head>
-	<title>Javascript Demo</title>
+	<title>Javascript Typewriter Demo</title>
 	<style>
 		body {
-			background-color:black;
+			background-color: #000000;
 			font-family: monospace;
-			color:white;
+			color: #FFFFFF;
 			font-size:50px;
 			text-align: center;
 			margin-top:20%;
@@ -25,16 +25,26 @@
 
 	<script>
 
+( function() {
+
 		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
 			character_counter = 0;
+			
+			var char = '';
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			char = words[word_counter][character_counter++];
+			console.log(char);
 
-			if(character_counter == words[word_counter].length)
+			if((char) == ' ') {
+				char = '&nbsp;'
+			}
+			el.innerHTML = el.innerHTML + char;
+
+			if(character_counter > words[word_counter].length)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
@@ -47,6 +57,7 @@
 		}
 
 		setInterval(updateText,300);
+})();
 
 	</script>
 
