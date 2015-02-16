@@ -24,8 +24,8 @@
 	Coding is <div id="magic"></div>
 
 	<script>
-
-		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
+	var myfunction=(function(){
+		var words = ["fun", "exciting", "about\xA0not\xA0giving\xA0up", "being\xA0helpful", "being\xA0open", "what\xA0I\xA0learned\xA0at\xA0CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
 			character_counter = 0;
@@ -34,7 +34,7 @@
 		{
 			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
 
-			if(character_counter == words[word_counter].length)
+			if(character_counter == words[word_counter].length+1)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
@@ -46,7 +46,7 @@
 			}
 		}
 
-		setInterval(updateText,300);
+		setInterval(updateText,300);})();
 
 	</script>
 
