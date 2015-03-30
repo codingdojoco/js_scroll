@@ -32,10 +32,21 @@
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			var letter = words[word_counter][character_counter++];
+			
 
-			if(character_counter == words[word_counter].length)
+			if (letter === " ")
 			{
+				
+				letter = "&nbsp";
+			}
+			console.log(letter)
+			el.innerHTML += letter;
+			
+
+			if(character_counter == words[word_counter].length+1)
+			{
+				
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
 				el.innerHTML = '';  //set the html to be blank
