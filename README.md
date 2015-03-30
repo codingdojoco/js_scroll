@@ -1,4 +1,6 @@
-js_scroll
-=========
+Tim' js_scroll
+==============
 
-Exercise for the CodingDojo's Javascript course.  See the learning platform to see how you should improve the codes.  There are several bugs with the codes which are intentional. :)
+Github [Link](https://github.com/tpchur/dojo-js-scroll)
+------
+Bug fixed version of the Coding Dojo js_scroll assignment.
