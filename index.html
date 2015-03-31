@@ -10,7 +10,6 @@
 			text-align: center;
 			margin-top:20%;
 		}
-
 		#magic{
 			color: #777;
 			border-right: 1px solid #777;
@@ -24,17 +23,21 @@
 	Coding is <div id="magic"></div>
 
 	<script>
-
+	( function( ){
 		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
 			character_counter = 0;
-
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			// el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			space = words[word_counter][character_counter++];
+				if (space === ' ') {
+					space = '&nbsp';
+				};
+			el.innerHTML = el.innerHTML+space;
 
-			if(character_counter == words[word_counter].length)
+			if(character_counter == words[word_counter].length+1)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
@@ -45,11 +48,8 @@
 					word_counter = 0;
 			}
 		}
-
 		setInterval(updateText,300);
-
-	</script>
-
+	}( ));
+</script>
 </body>
-
 </html>
