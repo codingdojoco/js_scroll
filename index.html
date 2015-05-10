@@ -1,3 +1,5 @@
+<!doctype html>
+<!-- EDITS SHOW MY COMMENTS  mike hannon-->
 <html>
 <head>
 	<title>Javascript Demo</title>
@@ -24,7 +26,8 @@
 	Coding is <div id="magic"></div>
 
 	<script>
-
+	//set as immediate function which limited scope of variables to a local scope.
+(function() {
 		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
@@ -32,9 +35,15 @@
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
 
-			if(character_counter == words[word_counter].length)
+			//2)created a conditional
+			if (words[word_counter][character_counter] == ' '){
+				el.innerHTML += "&nbsp;";
+			}
+			else {el.innerHTML += words[word_counter][character_counter];}
+			character_counter ++; //1) split the increment outside of the innerhtml change;
+			//decremented the character_counter and switch to undefined check
+			if(words[word_counter][character_counter-1] === undefined)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
@@ -44,9 +53,11 @@
 				if(word_counter == words.length)
 					word_counter = 0;
 			}
-		}
 
-		setInterval(updateText,300);
+		}
+		//sped things up a little it
+		setInterval(updateText,200);
+	})()
 
 	</script>
 
