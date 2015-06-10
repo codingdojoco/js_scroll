@@ -1,17 +1,18 @@
 <html>
+
 <head>
 	<title>Javascript Demo</title>
 	<style>
 		body {
-			background-color:black;
+			background-color: black;
 			font-family: monospace;
-			color:white;
-			font-size:50px;
+			color: white;
+			font-size: 50px;
 			text-align: center;
-			margin-top:20%;
+			margin-top: 20%;
 		}
 
-		#magic{
+		#magic {
 			color: #777;
 			border-right: 1px solid #777;
 			padding-right: 7px;
@@ -19,35 +20,38 @@
 		}
 	</style>
 </head>
+
 <body>
 
-	Coding is <div id="magic"></div>
+	Coding is
+	<div id="magic"></div>
 
 	<script>
+		(function() {
+			var words = ["fun time", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"];
+			var el = document.getElementById('magic');
+			var word_counter = 0;
+			var character_counter = 0;
 
-		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
-			el = document.getElementById('magic'),
-			word_counter = 0,
-			character_counter = 0;
+			function updateText() {
 
-		function updateText()
-		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+				if (words[word_counter][character_counter] == " ")
+					el.innerHTML += "&nbsp;"
+				else
+					el.innerHTML += words[word_counter][character_counter];
 
-			if(character_counter == words[word_counter].length)
-			{
-				word_counter++; 	//choose a different word
-				character_counter = 0;	//start over with the first character of the word
-				el.innerHTML = '';  //set the html to be blank
+				if (++character_counter == words[word_counter].length + 1) {
+					word_counter++; //choose a different word
+					character_counter = 0; //start over with the first character of the word
+					el.innerHTML = ''; //set the html to be blank
 
-				//if we're displaying the last word, go back to the first word
-				if(word_counter == words.length)
-					word_counter = 0;
+					//if we're displaying the last word, go back to the first word
+					if (word_counter == words.length)
+						word_counter = 0;
+				}
 			}
-		}
-
-		setInterval(updateText,300);
-
+			setInterval(updateText, 300);
+		}());
 	</script>
 
 </body>
