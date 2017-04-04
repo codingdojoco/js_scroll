@@ -10,7 +10,6 @@
 			text-align: center;
 			margin-top:20%;
 		}
-
 		#magic{
 			color: #777;
 			border-right: 1px solid #777;
@@ -24,30 +23,32 @@
 	Coding is <div id="magic"></div>
 
 	<script>
-
+	(function(){
 		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
 			character_counter = 0;
-
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
-
 			if(character_counter == words[word_counter].length)
 			{
-				word_counter++; 	//choose a different word
-				character_counter = 0;	//start over with the first character of the word
-				el.innerHTML = '';  //set the html to be blank
-
-				//if we're displaying the last word, go back to the first word
+				word_counter++;
+				character_counter = 0;
+				el.innerHTML = '';
 				if(word_counter == words.length)
 					word_counter = 0;
 			}
+			var char = words[word_counter][character_counter++];
+			if (char == ' ')
+				char = '&nbsp;';
+			el.innerHTML = el.innerHTML+char;
 		}
-
 		setInterval(updateText,300);
-
+		console.log("jjjjjjjj");
+		console.log(word_counter);
+	}());
+	console.log("sssssss");
+	console.log(word_counter);
 	</script>
 
 </body>
