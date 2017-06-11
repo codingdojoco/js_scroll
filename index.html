@@ -30,11 +30,16 @@
 			word_counter = 0,
 			character_counter = 0;
 
+
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			var char = words[word_counter][character_counter++]
+			if (char == " " ) {
+				char = "&nbsp"
+			}
+			el.innerHTML += char;
 
-			if(character_counter == words[word_counter].length)
+			if(character_counter > words[word_counter].length)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
