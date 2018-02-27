@@ -1,6 +1,5 @@
 <html>
 <head>
-  <meta charset ="utf-8">
 	<title>Javascript Demo</title>
 	<style>
 		body {
@@ -11,6 +10,7 @@
 			text-align: center;
 			margin-top:20%;
 		}
+
 		#magic{
 			color: #777;
 			border-right: 1px solid #777;
@@ -25,27 +25,42 @@
 
 	<script>
 
-		var words = ["fun", "exciting","about not giving up","being helpful","being open", "what I learned at CodingDojo!"],
+		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
 			character_counter = 0;
-      for (var i = 0; i < words.length; i++) {
-        words[i] = words[i].replace(" ",'\xa0');
-      }
+			// for (var i = 0; i < words.length; i++) {
+			// 	var str = words[i]
+			// 	for (var j = 0; j < str.length; j++ ) {
+			// 		if ([words][i][j] == [words][i][j].fromCharCode(160)){
+			// 			words[i][j] == ' '
+			// 		}
+			// 	}
+			// };
 		function updateText()
 		{
+
 			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+
+
 			if(character_counter == words[word_counter].length + 1)
 			{
 				word_counter++; 	//choose a different word
-				character_counter = 0;	//start over with the first character of the word
+				character_counter = 0;
+
+			 //start over with the first character of the word
 				el.innerHTML = '';  //set the html to be blank
+
 				//if we're displaying the last word, go back to the first word
 				if(word_counter == words.length)
 					word_counter = 0;
+
 			}
 		}
+
 		setInterval(updateText,300);
+		}
+		updateText()
 	</script>
 
 </body>
